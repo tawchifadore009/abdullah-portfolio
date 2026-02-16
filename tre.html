@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdullah Al Hossain | Premium Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#141e30,#243b55);
+color:white;
+overflow-x:hidden;
+}
+
+header{
+position:fixed;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 50px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+header h2{
+color:#00f5c4;
+}
+
+nav a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#00f5c4;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero img{
+width:150px;
+height:150px;
+border-radius:50%;
+border:4px solid #00f5c4;
+margin-bottom:20px;
+object-fit:cover;
+}
+
+.hero h1 span{
+color:#00f5c4;
+}
+
+.typing{
+color:#00f5c4;
+font-weight:bold;
+font-size:20px;
+margin-top:10px;
+}
+
+.btn{
+margin-top:20px;
+padding:10px 30px;
+border:none;
+border-radius:30px;
+background:#00f5c4;
+color:black;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+section{
+padding:100px 10%;
+}
+
+.section-title{
+font-size:32px;
+margin-bottom:30px;
+color:#00f5c4;
+text-align:center;
+}
+
+.card{
+background:rgba(255,255,255,0.1);
+padding:25px;
+margin:15px 0;
+border-radius:15px;
+backdrop-filter:blur(10px);
+transition:0.5s;
+opacity:0;
+transform:translateY(50px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:black;
+}
+
+@media(max-width:768px){
+header{
+flex-direction:column;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>Tawchif</h2>
+<nav>
+<a href="#about">About</a>
+<a href="#education">Education</a>
+<a href="#experience">Experience</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<div class="hero">
+<img src="https://via.placeholder.com/150" alt="Profile Photo">
+<h1>Hello, I'm <span>Abdullah Al Hossain</span></h1>
+<div class="typing" id="typing"></div>
+<button class="btn">Hire Me</button>
+</div>
+
+<section id="about">
+<h2 class="section-title">About Me</h2>
+<div class="card">
+Currently pursuing LLB under National University. Completed MA in Hadith and BA in English. Experienced in Sales, Teaching, Hospital Administration and Management.
+</div>
+</section>
+
+<section id="education">
+<h2 class="section-title">Education</h2>
+<div class="card">LLB – National University (2024–2025)</div>
+<div class="card">MA in Hadith – Islamic Arabic University (2024)</div>
+<div class="card">BA in English – National University (2023)</div>
+</section>
+
+<section id="experience">
+<h2 class="section-title">Experience</h2>
+<div class="card">Sales Representative – ACI Limited</div>
+<div class="card">Assistant Doctor – Zamzam Hospital</div>
+<div class="card">Assistant English Teacher (2021–2023)</div>
+<div class="card">Manager & Accountant – Evergreen Hospital</div>
+</section>
+
+<section id="skills">
+<h2 class="section-title">Skills</h2>
+<div class="skills">
+<div class="card">Sales & Marketing</div>
+<div class="card">Language Teaching</div>
+<div class="card">Leadership</div>
+<div class="card">Public Speaking</div>
+<div class="card">Microsoft Office</div>
+<div class="card">Management</div>
+</div>
+</section>
+
+<section id="contact">
+<h2 class="section-title">Contact Me</h2>
+<div class="card">
+<form class="contact-form">
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="5" placeholder="Your Message"></textarea>
+<button class="btn" type="submit">Send Message</button>
+</form>
+</div>
+</section>
+
+<footer>
+© 2026 Abdullah Al Hossain | Premium Portfolio
+</footer>
+
+<script>
+const textArray = ["LLB Candidate","Educator","Sales Professional","Manager"];
+let index = 0;
+let charIndex = 0;
+const typingElement = document.getElementById("typing");
+
+function type(){
+if(charIndex < textArray[index].length){
+typingElement.textContent += textArray[index].charAt(charIndex);
+charIndex++;
+setTimeout(type,100);
+}else{
+setTimeout(erase,1500);
+}
+}
+
+function erase(){
+if(charIndex > 0){
+typingElement.textContent = textArray[index].substring(0,charIndex-1);
+charIndex--;
+setTimeout(erase,50);
+}else{
+index = (index + 1) % textArray.length;
+setTimeout(type,500);
+}
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+type();
+});
+
+const cards = document.querySelectorAll(".card");
+window.addEventListener("scroll",()=>{
+cards.forEach(card=>{
+const cardTop = card.getBoundingClientRect().top;
+if(cardTop < window.innerHeight - 100){
+card.classList.add("show");
+}
+});
+});
+</script>
+
+</body>
+</html>
